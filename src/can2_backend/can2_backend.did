@@ -1,3 +1,4 @@
 service : {
-    "greet": (text) -> (text) query;
+    "dodaj_product": (text,text,text) -> ();
+    "read_title": () -> (vec text) query;
 }
