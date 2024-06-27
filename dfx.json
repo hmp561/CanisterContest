@@ -1,0 +1,27 @@
+{
+  "canisters": {
+    "can2_backend": {
+      "candid": "src/can2_backend/can2_backend.did",
+      "package": "can2_backend",
+      "type": "rust"
+    },
+    "can2_frontend": {
+      "dependencies": [
+        "can2_backend"
+      ],
+      "source": [
+        "src/can2_frontend/dist"
+      ],
+      "type": "assets",
+      "workspace": "can2_frontend"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
