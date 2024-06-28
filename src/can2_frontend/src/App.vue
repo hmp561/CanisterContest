@@ -49,8 +49,6 @@ async function handleSubmit(e) {
         <!-- tu kategoria np. marki albo typy, pomysł porzucony, może jak będzie czas-->
     </nav>
     <div id="holder-products">
-      <div id="products">
-        <Produkt />
-      </div>
+      <Produkt />
     </div>
 </template>

@@ -40,3 +40,16 @@ fn read_price() -> Vec<String>{
         wpisy.borrow().clone()
     })
 }
+#[ic_cdk::query]
+fn read_desc() -> Vec<String>{
+    PRODUCTS_DESC.with(|wpisy| {
+        wpisy.borrow().clone()
+    })
+}
+#[ic_cdk::query]
+fn read_url() -> Vec<String>{
+    PRODUCTS_URL.with(|wpisy| {
+        wpisy.borrow().clone()
+    })
+}
+

@@ -1,19 +1,22 @@
 <template>
-    <div class="produkt">
+    <div id="products" v-for="product in produkcts" >
+        <div class="produkt">
             <div class="holder-produkt-im">
-                <!-- <img src="grafika/marsshall-douszne-bezprzewodowe-1.jpg" alt="" class="produkt-img"> -->
+                <img :scr="product.url" alt="" class="produkt-img">
             </div>
-            <h2 class="produkt-title">MARSHALL Motif II </h2>
-            <p class="produkt-def">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis quo unde alias beatae accusantium. Maxime neque, assumenda provident quo ipsam possimus libero in, dolore soluta quia quis expedita doloribus omnis!</p>
+            <h2 class="produkt-title">{{ product["title"] }}</h2>
+            <p class="produkt-def">{{ product['desc'] }}</p>
             <div class="holder-price">
-                <span class="produkt-price"> 400 zł</span>
+                <span class="produkt-price">{{ product["price"] }}</span>
             </div>
-            <button class="produkt-addcart">
+            <button class="produkt-addcart" @click="getProducts">
                 <span class="addcart-text">Dodaj do koszyka</span>
                 <!-- <i class="fa-solid fa-cart-plus"></i> -->
             </button>
             <!-- <i class="fa-regular fa-circle-xmark close-button"></i> -->
         </div>
+      </div>
+        {{ produkcts[0] }}
 </template>
 
 <script>
@@ -26,11 +29,22 @@ export default {
             produkcts: [],
             editText: ""
         }
-    }
+    },
     methods: {
         async getProducts(){
-            let tile = await can2_backend.
+            let title = await can2_backend.read_title();
+            let price = await can2_backend.read_price();
+            let desc = await can2_backend.read_desc();
+            let url = await can2_backend.read_url();
+            
+            for (let index = 0; index < title.length; index++) {
+                this.produkcts[index] = {"title": title[index],"desc": desc[index],"price": price[index],"url": url[index]}
+            }
+
         }
+    },
+    async mounted() {
+        this.getProducts()
     },
 }
 

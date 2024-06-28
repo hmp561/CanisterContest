@@ -1,4 +1,7 @@
 service : {
     "dodaj_product": (text,text,text,text) -> ();
     "read_title": () -> (vec text) query;
+    "read_price": () -> (vec text) query;
+    "read_desc": () -> (vec text) query;
+    "read_url": () -> (vec text) query;
 }
