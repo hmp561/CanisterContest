@@ -15,3 +15,23 @@
             <!-- <i class="fa-regular fa-circle-xmark close-button"></i> -->
         </div>
 </template>
+
+<script>
+
+import { can2_backend } from 'declarations/can2_backend/index';
+
+export default {
+    data() {
+        return {
+            produkcts: [],
+            editText: ""
+        }
+    }
+    methods: {
+        async getProducts(){
+            let tile = await can2_backend.
+        }
+    },
+}
+
+</script>

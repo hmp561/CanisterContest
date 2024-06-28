@@ -6,18 +6,22 @@ use std::cell::RefCell;
 thread_local!{
     static PRODUCTS_TITLE: RefCell<Vec<String>> = RefCell::default();
     static PRODUCTS_PRICE: RefCell<Vec<String>> = RefCell::default();
+    static PRODUCTS_DESC: RefCell<Vec<String>> = RefCell::default();
     static PRODUCTS_URL: RefCell<Vec<String>> = RefCell::default();
 
     
 }
 
 #[ic_cdk::update]
-fn dodaj_product(title: String, price: String, img_path: String) {
+fn dodaj_product(title: String, price: String, desc: String, img_path: String) {
     PRODUCTS_PRICE.with(|products| {
         products.borrow_mut().push(price);
     });
     PRODUCTS_TITLE.with(|products| {
         products.borrow_mut().push(title);
+    });    
+    PRODUCTS_DESC.with(|products| {
+        products.borrow_mut().push(desc);
     });
     PRODUCTS_URL.with(|products| {
         products.borrow_mut().push(img_path);
